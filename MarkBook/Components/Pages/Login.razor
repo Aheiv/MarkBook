@@ -1,0 +1,41 @@
+﻿@page "/login"
+@using MarkBook.Data.Login
+@rendermode InteractiveServer
+
+<PageTitle>Вход</PageTitle>
+
+<div>
+	<div class="container h-100 py-5">
+		<EditForm Model="@loginModel" OnSubmit="Submit">
+			<div class="text-left">
+				<p>Для выполнения входа в систему укажите свой логин и пароль</p>
+			</div>
+			<div>
+				<p>Логин
+					<InputText @bind-Value="loginModel.Login" class="rounded"></InputText>
+				</p>
+			</div>
+			<div>
+				<p>Пароль
+				<InputText @bind-Value="loginModel.Password" class="rounded"></InputText> 
+				</p>
+			</div>
+
+			<DataAnnotationsValidator />
+			<ValidationSummary />
+
+			<div>
+				<button type="submit" class="btn btn-outline-info">Войти</button>
+			</div>
+		</EditForm>
+	</div>
+</div>
+
+@code {
+	private LoginModel loginModel = new LoginModel();
+
+	private void Submit()
+	{
+		
+	}
+}

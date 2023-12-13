@@ -1,0 +1,41 @@
+﻿@page "/"
+@inject NavigationManager navigation
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<div>
+	<div class="container h-100 py-5">
+		<div class="row h-100 justify-content-center align-items-center">
+			<div class="col-6 w-50 h-50">
+				@*
+					Надпись сверху
+				*@
+				<div class="text-center">
+					Добро пожаловать в "Твой дневник"!
+				</div>
+				@*
+					Краткое описание
+				*@
+				<div class="text-center">
+					<p>Для входа в систему "Твой дневник" нажмите на кнопку "Вход в систему"</p>
+				</div>
+				@*
+					Кнопки
+				*@
+				<div class="position-relative">
+					<div class="position-absolute top-50 start-50 translate-middle my-4">
+						<button type="button" class="btn btn-outline-info" @onclick="RedirectToLogin">Вход в систему</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+	private void RedirectToLogin()
+	{
+		navigation.NavigateTo("/login");
+	}
+}
