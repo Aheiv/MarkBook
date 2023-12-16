@@ -1,5 +1,10 @@
 ﻿@page "/"
+
+@using MarkBook.Data.Database
+@using Microsoft.EntityFrameworkCore
+
 @inject NavigationManager navigation
+@inject IDbContextFactory<Context> DbFactory
 @rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
@@ -32,6 +37,7 @@
 		</div>
 	</div>
 </div>
+
 
 @code {
 	private void RedirectToLogin()

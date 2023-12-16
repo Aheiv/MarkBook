@@ -1,10 +1,19 @@
 using MarkBook.Components;
+using MarkBook.Data.Database;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Для базы данных
+string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
+if (connection != null)
+{
+    builder.Services.AddDbContextFactory<Context>(opt => opt.UseSqlServer(connection));
+}
 
 var app = builder.Build();
 
