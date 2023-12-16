@@ -20,5 +20,5 @@ namespace MarkBook.Data.Database
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<Subject_Student_Mark> Subject_Student_Mark { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
-    }
+	}
 }

@@ -18,7 +18,7 @@ namespace MarkBook.Data.Database.Model
         public int? grade { get; set; }
 
         [StringLength(2)]
-        public string appointment { get; set; }
+        public string? appointment { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? date { get; set; }

@@ -21,8 +21,6 @@ namespace MarkBook.Data.Database.Model
         [StringLength(1)]
         public string subname { get; set; }
 
-        public int id_student { get; set; }
-
         public virtual Student Student { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

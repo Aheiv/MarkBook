@@ -1,14 +1,58 @@
 ﻿@page "/admin/marks"
+@using Microsoft.EntityFrameworkCore
 
+@inject IDbContextFactory<Data.Database.Context> DbFactory
 @layout Components.Layout.AdminLayout
 @rendermode InteractiveServer
 
 <div>
 	<div class="container h-50 py-10">
-		Оценки
+		@if (!loading)
+		{
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Посещение</th>
+						<th scope="col">Оценка</th>
+						<th scope="col">Дата проставления</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (Data.Database.Model.Mark mark in marks)
+					{
+						string appointment = mark.appointment == null ? "-" : mark.appointment;
+
+						<tr>
+							<th scope="row">@mark.id_mark</th>
+							<td>@appointment</td>
+							<td>@mark.grade</td>
+							<td>@mark.date.Value.ToLongDateString()</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		}
 	</div>
 </div>
 
 @code {
+	private bool loading = true;
 
+	private List<Data.Database.Model.Mark> marks;
+
+	private async Task LoadMarks()
+	{
+		using (var db = DbFactory.CreateDbContext())
+		{
+			loading = true;
+			marks = await db.Marks.ToListAsync();
+		}
+		loading = false;
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		await LoadMarks();
+	}
 }

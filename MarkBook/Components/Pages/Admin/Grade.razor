@@ -1,14 +1,55 @@
 ﻿@page "/admin/grades"
+@using Microsoft.EntityFrameworkCore
 
+@inject IDbContextFactory<Data.Database.Context> DbFactory
 @layout Components.Layout.AdminLayout
 @rendermode InteractiveServer
 
 <div>
 	<div class="container h-50 py-10">
-        Классы
+		@if (!loading)
+		{
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Наименование</th>
+						<th scope="col">Субнаименование</th>
+						<th scope="col">Студент</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (Data.Database.Model.Grade grade in grades)
+					{
+						<tr>
+							<th scope="row">@grade.id_grade</th>
+							<td>@grade.name</td>
+							<td>@grade.subname</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		}
 	</div>
 </div>
 
 @code {
+	private bool loading = true;
 
+	private List<Data.Database.Model.Grade> grades;
+
+	private async Task LoadGrades()
+	{
+		using (var db = DbFactory.CreateDbContext())
+		{
+			loading = true;
+			grades = await db.Grades.ToListAsync();
+		}
+		loading = false;
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		await LoadGrades();
+	}
 }
