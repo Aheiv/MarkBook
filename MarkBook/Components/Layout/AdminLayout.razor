@@ -1,0 +1,58 @@
+﻿@inherits LayoutComponentBase
+
+<body>
+    <div class="wrapper">
+        <header>
+            <Navigation></Navigation>
+        </header>
+
+        <main class="content">
+            <div class="container h-50 py-10">
+                <ul class="nav nav-pills nav-justified">
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="admin/grades" Match="NavLinkMatch.All">
+                            <span class="oi oi-home" aria-hidden="true"></span> Классы
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="admin/marks">
+                            <span class="oi oi-home" aria-hidden="true"></span> Оценки
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="admin/parents">
+                            <span class="oi oi-home" aria-hidden="true"></span> Родители
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="admin/schedules">
+                            <span class="oi oi-home" aria-hidden="true"></span> Расписания
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="admin/specializations">
+                            <span class="oi oi-home" aria-hidden="true"></span> Специализация преподавателей
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="admin/students">
+                            <span class="oi oi-home" aria-hidden="true"></span> Ученики
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="admin/subjects">
+                            <span class="oi oi-home" aria-hidden="true"></span> Предметы
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="admin/teachers">
+                            <span class="oi oi-home" aria-hidden="true"></span> Учителя
+                        </NavLink>
+                    </li>
+                </ul>
+            </div>
+
+            @Body
+        </main>
+    </div>
+</body>
